@@ -1,0 +1,11 @@
+Time: 20190614_042215
+Machine: cori-haswell
+Resolution: RRS30to10
+Horizontal cells: 1445361
+Run duration: ['01', '00', '00']
+Run time in sec: 3600
+Format: #Procs|Sample Runs|Average|SYPD
+2048    2.41430         2.41558         2.47936         2.43641333333    4.04816931663
+4096    1.30736         1.24464         1.34875         1.30025          7.58547486916
+
+
