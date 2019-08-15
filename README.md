@@ -23,16 +23,17 @@ The python code store in this repository read the outputs from MPAS testcase whi
 ```sh
 $ python3 Layer_subroutine_performance.py  ' 5 '
 ```
-#### Layers suboritines
-This is a python3 program to search and extract subroutine performance time on a specific output folder 
+#### Layer subroutines
+The program search and extract subroutine performance time on a specific output folder 
 ```
 perf_p??_gr_openmpi/ . 
 ```
-The program is desine to search for specifc layer and select the subroutines that bellow to than layer.
-The code calculate the average for each variable using the information found on the following files 
+The program search for specifc layer and select the subroutines that bellow to than layer.
+and calculate the average for each variable using the information found on the following files 
 ```
 log_p??_s1, log_p??_s2, log_p??_s3
 ```
+The importan part on each **{log_p??_s?}** file is similar to
 ```
     timer_name                                            total       calls        min            max            avg      pct_tot   pct_par     par_eff
   1 total time                                        2983.49082         1     2983.47955     2983.49082     2983.48518   100.00       0.00       1.00
