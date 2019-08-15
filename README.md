@@ -9,7 +9,7 @@ The python code store in this repository read the outputs from MPAS testcase whi
   * [Data Layer](#Data-Layer)
 - [HPC Cluster performance](#HPC-Cluster-performance)
   * [Compile](#Compile)
-  * [Data HPC Cluster](#Data-HPC-Cluster)
+  * [Data HPC](#Data-HPC-Cluster)
 <!-- 
     + [Sub-sub-heading](#sub-sub-heading-1)
 -->
@@ -88,7 +88,7 @@ Elapsed time and Press any key to terminate
 ## HPC Cluster performance
 <!-- This is an h1 heading -->
 ### Compile
-### Data HPC Cluster
+### Data HPC
 ```sh
 $ python3 HPC_cluster_system_performance.py
 ```
