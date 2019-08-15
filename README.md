@@ -5,9 +5,7 @@ The python code store in this repository read the outputs from MPAS testcase whi
 ## Table of Contents
 - [Layer performance evaluation](#Layer-performance-evaluation)
   * [Compile](#Compile)
-<!-- 
-    + [Sub-sub-heading](#sub-sub-heading)
--->
+  + [Layer subroutines](#Layer-subroutines)
 - [HPC Cluster performance](#HPC-Cluster-performance)
   * [Compile](#Compile)
 <!-- 
