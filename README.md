@@ -4,41 +4,40 @@ The python code store in this repository read the outputs from MPAS testcase whi
 
 - [Layer performance evaluation](#Layer-performance-evaluation)
   * [Compile](#Compile)
+  <!-- 
     + [Sub-sub-heading](#sub-sub-heading)
+-->
 - [HPC Cluster performance](#HPC-Cluster-performance)
   * [Compile](#Compile)
+<!-- 
     + [Sub-sub-heading](#sub-sub-heading-1)
+-->
 - [Rules](#Rules)
 
 <!-- Comments -->
 
 ## Layer performance evaluation
-
-This is an h1 heading
+<!-- This is an h1 heading -->
 
 ## Compile
-
 ```sh
-$ python3 layer_performance_evaluation.py
+$ python3 layer_subroutine_performance.py  ' 5 '
 ```
-
+<!-- 
 #### Sub-sub-heading
-
 This is an h3 heading
-
+-->
 ## HPC Cluster performance
-
-This is an h1 heading
+<!-- This is an h1 heading -->
 
 ## Compile
-
 ```sh
 $ python3 HPC_cluster_system_performance.py
 ```
-
+<!-- 
 #### Sub-sub-heading
-
 This is an h3 heading
+-->
 ## Rules
 >Here are the rules for (or lack thereof):
    1. Push changes directly to head of https://github.com/hrmoncada/MPAS-Performance-Plotting
