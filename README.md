@@ -1,5 +1,5 @@
 # MPAS-Performance-Plotting
-> This is a control version private repository for the development and sharing (public, no available) . 
+This is a control version private repository for the development and sharing (public, no available) . 
 The python code store in this repository read the outputs from MPAS testcase which were executed on differents HPC cluster. The outputs have information about the layer subroutine performance 
 
 - [Layer performance evaluation](#Layer-performance-evaluation)
@@ -20,7 +20,7 @@ The python code store in this repository read the outputs from MPAS testcase whi
 <!-- This is an h1 heading -->
 ## Compile
 ```sh
-$ python3 layer_subroutine_performance.py  ' 5 '
+$ python3 Layer_subroutine_performance.py  ' 5 '
 ```
 <!-- 
 #### Sub-sub-heading
