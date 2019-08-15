@@ -1,5 +1,5 @@
 # MPAS-Performance-Plotting
-> This is a control version private (public, no available) repository for the development and sharing. 
+> This is a control version private repository for the development and sharing (public, no available) . 
 The python code store in this repository read the outputs from MPAS testcase which were executed on differents HPC cluster. The outputs have information about the layer subroutine performance 
 - [Layer performance evaluation](#Layer-performance-evaluation)
   * [Sub-heading](#sub-heading)
@@ -35,7 +35,7 @@ This is an h2 heading
 
 This is an h3 heading
 ## Rules
-Here are the rules for (or lack thereof):
+>Here are the rules for (or lack thereof):
    1. Push changes directly to head of https://github.com/hrmoncada/MPAS-Performance-Plotting
    2. No pull requests or reviews are needed, unless you would like one. This means that personal forks of /MPAS-Performance-Plotting are not needed.
    3. Only restriction is to not overwrite files others have uploaded, without asking them.
