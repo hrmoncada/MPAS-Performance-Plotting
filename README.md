@@ -8,8 +8,7 @@ The python code store in this repository read the outputs from MPAS testcase whi
   * [Sub-heading](#sub-heading-1)
     + [Sub-sub-heading](#sub-sub-heading-1)
 - [Rules](#Rules)
-  * [Sub-heading](#sub-heading-2)
-    + [Sub-sub-heading](#sub-sub-heading-2)    
+
 <!-- Comments -->
 
 ## Layer performance evaluation
