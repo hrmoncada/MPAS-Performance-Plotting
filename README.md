@@ -1,25 +1,18 @@
 # MPAS-Performance-Plotting
-This is a control version private (public, no available) repository for the development and sharing. 
+> This is a control version private (public, no available) repository for the development and sharing. 
 The python code store in this repository read the outputs from MPAS testcase which were executed on differents HPC cluster. The outputs have information about the layer subroutine performance 
-- [Heading](#heading)
+- [Layer performance evaluation](#heading)
   * [Sub-heading](#sub-heading)
     + [Sub-sub-heading](#sub-sub-heading)
-- [Heading](#heading-1)
+- [HPC Cluster performance](#heading-1)
   * [Sub-heading](#sub-heading-1)
     + [Sub-sub-heading](#sub-sub-heading-1)
-- [Heading](#heading-2)
+- [Rules](#heading-2)
   * [Sub-heading](#sub-heading-2)
-    + [Sub-sub-heading](#sub-sub-heading-2)
-    
-<!-- Layer performance evaluation
-HPC Cluster performance-->
-# Heading levels
+    + [Sub-sub-heading](#sub-sub-heading-2)    
+<!-- Comments -->
 
-> This is a fixture to test heading levels
-
-<!-- toc -->
-
-## Heading
+## Layer performance evaluation
 
 This is an h1 heading
 
@@ -31,7 +24,7 @@ This is an h2 heading
 
 This is an h3 heading
 
-## Heading
+## HPC Cluster performance
 
 This is an h1 heading
 
@@ -42,21 +35,7 @@ This is an h2 heading
 #### Sub-sub-heading
 
 This is an h3 heading
-
-## Heading
-
-This is an h1 heading
-
-### Sub-heading
-
-This is an h2 heading
-
-#### Sub-sub-heading
-
-This is an h3 heading
-
-
-
+## Rules
 Here are the rules for (or lack thereof):
    1. Push changes directly to head of https://github.com/hrmoncada/MPAS-Performance-Plotting
 
