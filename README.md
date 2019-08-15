@@ -1,13 +1,13 @@
 # MPAS-Performance-Plotting
 > This is a control version private (public, no available) repository for the development and sharing. 
 The python code store in this repository read the outputs from MPAS testcase which were executed on differents HPC cluster. The outputs have information about the layer subroutine performance 
-- [Layer performance evaluation](#heading)
+- [Layer performance evaluation](#Layer performance evaluation)
   * [Sub-heading](#sub-heading)
     + [Sub-sub-heading](#sub-sub-heading)
-- [HPC Cluster performance](#heading-1)
+- [HPC Cluster performance](#HPC Cluster performance)
   * [Sub-heading](#sub-heading-1)
     + [Sub-sub-heading](#sub-sub-heading-1)
-- [Rules](#heading-2)
+- [Rules](#Rules)
   * [Sub-heading](#sub-heading-2)
     + [Sub-sub-heading](#sub-sub-heading-2)    
 <!-- Comments -->
