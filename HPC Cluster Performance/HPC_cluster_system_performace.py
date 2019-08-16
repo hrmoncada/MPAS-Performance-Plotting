@@ -1,6 +1,6 @@
 """
 Version 1
-$ python3 LANL_Henry_plot_from_files.py 
+$ python3 HPC_cluster_system_performace.py  
 TestCases:
   1: EC60to30
   2: RRS18to6
