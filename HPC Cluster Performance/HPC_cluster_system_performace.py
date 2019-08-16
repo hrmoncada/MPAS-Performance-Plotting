@@ -1,6 +1,6 @@
 """
-Version 1
-$ python3 LANL_Henry_plot_from_files.py 
+Version 2
+$ python3 HPC_cluster_system_performace.py 
 TestCases:
   1: EC60to30
   2: RRS18to6
@@ -15,6 +15,7 @@ import sys
 import os
 import glob
 import time
+import re
 #----------------------------------------------------
 # Start time
 #----------------------------------------------------
@@ -32,49 +33,63 @@ print("Current path folder = %s\n"% cwd)
 #-----------------------------------------------------------------------------
 print ("This is the name of the script: %s\n"% sys.argv[0])
 
-print('TestCases:','  1: EC60to30','  2: RRS18to6','  3: RRS30to10',sep='\n')
-TestCase = int(input("Please Enter the TestCase Integer: "))
+#----------------------------------------------------
+# Chose plot type
+#----------------------------------------------------
+print('Plot Type:','  1: Network','  2: Testcase',sep='\n')
+print(' ')
+PlotType = int(
+input("Please Enter the Plot-Type Integer: "))
+print(' ') 
 
-# Pick one filename
-if TestCase == 1:                     
-   filename_1 = 'EC60to30_grizzly.txt'
-   filename_2 = 'EC60to30_badger.txt'
-elif TestCase == 2:  
-  filename_1 = 'RRS18to6_grizzly.txt'
-  filename_2 = 'RRS18to6_badger.txt'
-elif TestCase == 3:     
-  filename_1 = 'RRS30to10_grizzly.txt'
-  filename_2 = 'RRS30to10_badger.txt'
-else :
+if PlotType == 1 : # Network file list
+  print('Network:','  1: grizzly','  2: badger','  3: cori-haswell','  4: cori-knl',sep='\n')
+  print(' ') 
+  Network = int(input("Please Enter the Network Integer: "))
+  Network_list = ['grizzly','badger','cori-haswell','cori-knl']
+  print('\nNetwork : ',Network_list[Network-1])
+  # Abort the execution
+  sys.exit("aa! errors!")
+elif PlotType == 2 : # Test case list
+  print('TestCases:','  1: EC60to30','  2: RRS18to6','  3: RRS30to10',sep='\n')
+  print(' ')
+  TestCase = int(input("Please Enter the TestCase Integer: "))
+  TestCase_list = ['EC60to30','RRS18to6','RRS30to10']
+  print('\nTest case : ',TestCase_list[TestCase-1])
+else :  
   print ,'Wrong !!! try again '
-print(' ')  
+print(' ')   
 
-# Slip folder name: 
-parts_filename_1 = filename_1.split('_')
-parts_filename_2 = filename_2.split('_')
-#print line # in python 2
-#print(i, line)  # in python 3
-print('Chosen TestCase : ', parts_filename_1[0])
-print ('Network : ', parts_filename_1[1])
+#----------------------------------------------------
+# Create the folders file list
+#----------------------------------------------------
+print('On Data:')
+list_of_files = glob.glob('data/'+TestCase_list[TestCase-1]+'*')
+filename = []
+Network  = []
+Case_name = []
+# Print the files names request to be plot
+for line in list_of_files:
+    filename.append(line.split('/')[1])
+    Case_name.append(re.split('[/ _ .]',line)[1])
+    Network.append(re.split('[/ _ .]',line)[2])
+    print(" %s "% line.split('/')[1])
+
+print(' ') 
+#print(filename)
+#print(Network)
+#print(Case_name)
+#print('Chosen TestCase : ', )
 
 # Open the data files with read only permit
 data_path = cwd+'/'+'data'+'/'
-data_1 = open(data_path+filename_1, 'r')
-data_2 = open(data_path+filename_2, 'r')
+data_1 = open(data_path+filename[0], 'r')
+data_2 = open(data_path+filename[1], 'r')
 
-
-#----------------------------------------------------
-# Create the list of files with the parts_filename_1[0] name
-list_of_files = glob.glob('data/'+parts_filename_1[0]+'*')
-
-# Print the files names request to be plot
-for line in list_of_files:
-    print(" %s "% line)
-print(' ') 
 #----------------------------------------------------
 # Set empty arrays for grizzly
 #----------------------------------------------------
-Cores_G= []
+Cores_G = []
 Performance_Time_G = []
 Perfect_Scaling_G = []
 Perfect_Scaling_SYPD_G = []
@@ -104,12 +119,6 @@ for line in data_1:
 # close the file after reading the lines.
 data_1.close()
 
-#print (*Cores_G,sep='\n')
-#print (*Performance_Time_G,sep='\n')
-#print (*SYPD_G,sep='\n')
-#DATA = []
-#DATA = np.c_[Cores_G, Performance_Time_G, SYPD_G]  # add columns
-#print (*DATA,sep='\n')
 #----------------------------------------------------
 # Reverse array for Grizzly
 #----------------------------------------------------
@@ -123,18 +132,7 @@ for num in range(0,Perf_length_G):
     Perfect_Scaling_G.append(Performance_Time_G[0]/(2**num))
     Perfect_Scaling_SYPD_G.append((2**num)*SYPD_G[0])
 
-'''# Best curve fit
-z_SYPD = np.polyfit(Cores_G, SYPD_G,2)
-z_Performance = np.polyfit(Cores_G, Performance_Time_G,2)
 
-f_SYPD = np.poly1d(z_SYPD)
-f_Performance = np.poly1d(z_Performance)
-
-# calculate new x's and y's
-#x_new = np.linspace(Cores_G[0], Cores_G[-1], 10)
-y_SYPD = f_SYPD(Cores_G)
-y_Performance = f_Performance(Cores_G)
-'''
 n = 0
 # Loop through each line of the input data file
 for line in data_2:
@@ -150,6 +148,7 @@ for line in data_2:
 
 # close the file after reading the lines.
 data_2.close()
+
 #----------------------------------------------------
 # Reverse array for Badger
 #----------------------------------------------------
@@ -160,15 +159,12 @@ SYPD_B.reverse()
 #----------------------------------------------------
 # Plot data
 #---------------------------------------------------- 
-# Create plottting 
 plt.clf()
 f = plt.figure(1) 
 plt.subplot(121)
-plt.loglog(Cores_G, SYPD_G,'ro-', linewidth=1, markeredgewidth= 0, markersize=10, label=parts_filename_1[0]+', '+parts_filename_1[1])
+plt.loglog(Cores_G, SYPD_G,'ro-', linewidth=1, markeredgewidth= 0, markersize=10, label=Case_name[0]+', '+ Network[0])
 plt.loglog(Cores_G, Perfect_Scaling_SYPD_G,'k*--', linewidth=2, markeredgewidth= 0, markersize=10, label='Perfect Scaling')
-#plt.loglog(Cores_G, y_SYPD,'g*--', linewidth=2, markeredgewidth= 0, markersize=10, label='Perfect Scaling')
-plt.loglog(Cores_B, SYPD_B,'bs-', linewidth=1, markeredgewidth= 0, markersize=5, label=parts_filename_2[0]+', '+parts_filename_2[1])
-#plt.loglog(Cores_B, Perfect_Scaling_B,'m--', linewidth=2, label='Perfect Scaling')
+plt.loglog(Cores_B, SYPD_B,'bs-', linewidth=1, markeredgewidth= 0, markersize=5, label=Case_name[1]+', '+Network[1])
 
 plt.xlabel('Number of MPI ranks', fontsize=14, weight='bold')
 plt.ylabel('Simulated Years per Day (SYPD)', fontsize=14, weight='bold')
@@ -179,11 +175,8 @@ plt.legend(loc='upper left')
 
 #plt.figure(2) 
 plt.subplot(122)
-plt.plot(Cores_G, Performance_Time_G,'ro-', linewidth=1, markeredgewidth= 0, markersize=10, label=parts_filename_1[0]+', '+parts_filename_1[1])
-plt.plot(Cores_G, Perfect_Scaling_G,'k*--', linewidth=2, markeredgewidth= 0, markersize=10, label='Perfect Scaling')
-#plt.plot(Cores_G, y_Performance,'g*--', linewidth=2, markeredgewidth= 0, markersize=10, label='Perfect Scaling')
-plt.plot(Cores_B, Performance_Time_B,'bs-', linewidth=1, markeredgewidth= 0, markersize=5, label=parts_filename_2[0]+', '+parts_filename_2[1])
-#plt.loglog(Cores_B, Perfect_Scaling_B,'m--', linewidth=2, label='Perfect Scaling')
+plt.plot(Cores_G, Performance_Time_G,'ro-', linewidth=1, markeredgewidth= 0, markersize=10, label= Case_name[0]+', '+ Network[0])
+plt.plot(Cores_B, Performance_Time_B,'bs-', linewidth=1, markeredgewidth= 0, markersize=5, label=Case_name[0]+', '+ Network[0])
 plt.xlim(-100,4200)
 plt.ylim(-10,600)
 plt.xlabel('Number of MPI ranks', fontsize=14, weight='bold')
@@ -196,10 +189,8 @@ plt.legend(loc='upper right')
 #----------------------------------------------------
 # Show and Save figure
 #----------------------------------------------------
-# plt.show()
 plt.show(block=False) # block=False, allow the code to continue into the next step
-# Save figure
-f.savefig(parts_filename_1[0]+'_result.pdf', bbox_inches='tight')
+f.savefig(Case_name[0]+'_result.pdf', bbox_inches='tight')
 
 #----------------------------------------------------
 # Press any key to terminate
