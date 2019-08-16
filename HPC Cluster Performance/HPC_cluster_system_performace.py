@@ -1,5 +1,5 @@
 """
-Version 3
+Version 4
 $ python3 HPC_cluster_system_performace.py 
 TestCases:
   1: EC60to30
@@ -63,7 +63,6 @@ print(' ')
 #----------------------------------------------------
 # Create the folders file list
 #----------------------------------------------------
-print('On Data:')
 list_of_files = glob.glob('data/'+TestCase_list[TestCase-1]+'*')
 filename = []
 Network  = []
@@ -73,106 +72,109 @@ for line in list_of_files:
     filename.append(line.split('/')[1])
     Case_name.append(re.split('[/ _ .]',line)[1])
     Network.append(re.split('[/ _ .]',line)[2])
-    print(" %s "% line.split('/')[1])
+   
 
+print("Networks:")
+#print(*Network, sep='\n')
+print(*Network, sep=', ')
 print(' ') 
-#print(filename)
-#print(Network)
-#print(Case_name)
-#print('Chosen TestCase : ', )
-
 #----------------------------------------------------
 # Open the data files with read only permit
 #----------------------------------------------------
 data_path = cwd+'/'+'data'+'/'
 
-#with open(data_path + filename[0], 'r') as f:
-#  print(f.read())
+#----------------------------------------------------
+# Color array
+#----------------------------------------------------
+colours=['r','g','b','k']
 
-for fline in filename:
-  #print(fline)
-  data = open(data_path + fline, 'r')
+#----------------------------------------------------
+# Initialize data plot 
+#---------------------------------------------------- 
+# Create plottting 
+#plt.clf()
+f = plt.figure() 
+#----------------------------------------------------
+# Create an empty list, for 1D  array
+#----------------------------------------------------
+Cores = []
+Performance_Time = []
+Perfect_Scaling  = []
+Perfect_Scaling_SYPD = []
+SYPD = []
+
+for i in range(len(filename)):  
+  data = open(data_path+filename[i], 'r')
   #print(data.read())
-  #data_2 = open(data_path+filename[1], 'r')
-
 #----------------------------------------------------
-# Set empty arrays for grizzly
+# Create an empty list, inside a empty list, for a 2D array
 #----------------------------------------------------
-  Cores = []
-  Performance_Time = []
-  Perfect_Scaling  = []
-  Perfect_Scaling_SYPD = []
-  SYPD = []
+  Cores.append([])
+  Performance_Time.append([])
+  SYPD.append([])
+#----------------------------------------------------
+# Add elements to empty lists.
+#----------------------------------------------------
   n = 0
-  
-#----------------------------------------------------
-# Loop through each line of the input data file
-#----------------------------------------------------
   for line in data:
      if (n > 6):  
        words = line.split()  
-       Cores.append(int(words[0]))                # Number of Cores
-       Performance_Time.append(float(words[4]))   # Average Time Performance
-       SYPD.append(float(words[5]))               # SYPD
+       Cores[i].append(int(words[0]))                # Number of Cores
+       Performance_Time[i].append(float(words[4]))   # Average Time Performance
+       SYPD[i].append(float(words[5]))               # SYPD
 # check if line is not empty
      if not line:
        break
      n += 1
-     
-  #print(Cores)
-  #print(Performance_Time)
-  #print(SYPD)  
+
 # close the file after reading the lines.
   data.close()
+  
+# Plots Data
+  f.add_subplot(121)
+  plt.loglog(Cores[i], SYPD[i],'ro-', linewidth=1, markeredgewidth= 0, markersize=10, label=Case_name[i]+', '+ Network[i], color=colours[i])
+  
+  f.add_subplot(122)
+  plt.plot(Cores[i], Performance_Time[i],'ro-', linewidth=1, markeredgewidth= 0, markersize=10, label= Case_name[i]+', '+ Network[i], color=colours[i])
 
-#print(Performance_Time)
-#print(SYPD)
 #----------------------------------------------------
-# Reverse array for Grizzly
+# Reverse array function
 #----------------------------------------------------
-Cores.reverse()
-Performance_Time.reverse()
-SYPD.reverse() 
-print(Performance_Time)
-print(SYPD)
-print('-----------------------------')
+def reverse(L):
+	L = [listElem[::-1] for listElem in L[::-1]]
+	return L
+Cores = reverse(Cores)
+Performance_Time = reverse(Performance_Time)
+SYPD = reverse(SYPD)
+
+#----------------------------------------------------
 # Perfect Scaling
-Perf_length = len(SYPD)
-print(Perf_length)
-print(SYPD[0])
+#----------------------------------------------------
+Perf_length = len(SYPD[0])
 for num in range(0,Perf_length): 
-     Perfect_Scaling.append(Performance_Time[0]/(2**num))
-     Perfect_Scaling_SYPD.append((2**num)*SYPD[0])
-#print(Cores)
-#print(SYPD)
-#print(Performance_Time[0])
-print(Perfect_Scaling)
-print(Perfect_Scaling_SYPD) 
+     Perfect_Scaling.append(Performance_Time[0][0]/(2**num))
+     Perfect_Scaling_SYPD.append((2**num)*SYPD[0][0])
 
 #----------------------------------------------------
-# Plot data
-#---------------------------------------------------- 
-
-# Create plottting 
-plt.clf()
-f = plt.figure(1) 
-plt.subplot(121)
-plt.loglog(Cores, SYPD,'ro-', linewidth=1, markeredgewidth= 0, markersize=10, label=Case_name[0]+', '+ Network[0])
-plt.loglog(Cores, Perfect_Scaling_SYPD,'k*--', linewidth=2, markeredgewidth= 0, markersize=10, label='Perfect Scaling')
+# Plot Perfect Scaling
+#----------------------------------------------------
+f.add_subplot(121)
+plt.loglog(Cores[0], Perfect_Scaling_SYPD,'k*--', linewidth=2, markeredgewidth= 0, markersize=10, label='Perfect Scaling')
 plt.xlabel('Number of MPI ranks', fontsize=14, weight='bold')
 plt.ylabel('Simulated Years per Day (SYPD)', fontsize=14, weight='bold')
 plt.title('MPAS-ocean Performance Curve', fontsize=14, weight='bold')
+plt.autoscale(tight=True)
+#plt.autoscale(enable=True, axis='y')
 plt.tight_layout()
 plt.grid(which='major')
 plt.legend(loc='upper left')
 
-#plt.figure(2) 
-plt.subplot(122)
-plt.plot(Cores, Performance_Time,'ro-', linewidth=1, markeredgewidth= 0, markersize=10, label= Case_name[0]+', '+ Network[0])
-plt.plot(Cores, Perfect_Scaling,'k*--', linewidth=2, markeredgewidth= 0, markersize=10, label= 'Perfect Scaling')
-
-plt.xlim(-100,4200)
-plt.ylim(-10,600)
+f.add_subplot(122)
+plt.plot(Cores[0], Perfect_Scaling,'k*--', linewidth=2, markeredgewidth= 0, markersize=10, label= 'Perfect Scaling')
+#plt.xlim(-100,4200)
+#plt.ylim(-10,600)
+plt.autoscale(tight=True)
+#plt.autoscale(enable=True, axis='y')
 plt.xlabel('Number of MPI ranks', fontsize=14, weight='bold')
 plt.ylabel('Performance Time', fontsize=14, weight='bold')
 plt.title('MPAS-ocean Performance Curve', fontsize=14, weight='bold')
