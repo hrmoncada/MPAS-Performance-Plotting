@@ -33,7 +33,7 @@ and calculate the average for each variable using the information found on the f
 ```
 log_p??_s1, log_p??_s2, log_p??_s3
 ```
-Note that on each **{log_p??_s?}** file we look for the following part. it show he subroutine layer and name performance outputs
+Note that on each **{log_p??_s?}** file we look for the following part. This part show the subroutine layer number and name performance outputs
 ```
     timer_name                                            total       calls        min            max            avg      pct_tot   pct_par     par_eff
   1 total time                                        2983.49082         1     2983.47955     2983.49082     2983.48518   100.00       0.00       1.00
