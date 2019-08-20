@@ -78,11 +78,11 @@ The importan part on each **{log_p??_s?}** file is similar to
 This folder contains the folder outputs for each testcase and HPC system
 ```
 data/
- |__ * LANL_Badge/
- |__ * LANL_Grizzly/
- |__ * NERSC_Cori_Haswell/
- |__ * NERSC_Cori_KNL/
- |__ * ORNL_Summit/
+ |__LANL_Badge/
+ |__LANL_Grizzly/
+ |__NERSC_Cori_Haswell/
+ |__NERSC_Cori_KNL/
+ |__ORNL_Summit/
 ```
 ## HPC Cluster performance
 <!-- This is an h1 heading -->
@@ -94,16 +94,16 @@ $ python3 HPC_cluster_system_performance.py
 Each file contains performance measures for each testcase and HPC system 
 ```sh
 data/
-  |__ * EC60to30_badger.txt
-  |__ * EC60to30_Cori_Haswell.txt
-  |__ * EC60to30_Cori_KNLl.txt
-  |__ * EC60to30_grizzly.txt
-  |__ * RRS18to6_badger.txt
-  |__ * RRS18to6_Cori_Haswell.txt
-  |__ * RRS18to6_grizzly.txt
-  |__ * RRS30to10_badger.txt
-  |__ * RRS30to10_Cori_Haswell.txt
-  |__ * RRS30to10_grizzly.txt
+  |__EC60to30_badger.txt
+  |__EC60to30_Cori_Haswell.txt
+  |__EC60to30_Cori_KNLl.txt
+  |__EC60to30_grizzly.txt
+  |__RRS18to6_badger.txt
+  |__RRS18to6_Cori_Haswell.txt
+  |__RRS18to6_grizzly.txt
+  |__RRS30to10_badger.txt
+  |__RRS30to10_Cori_Haswell.txt
+  |__RRS30to10_grizzly.txt
 ```
 <!-- 
 #### Sub-sub-heading
