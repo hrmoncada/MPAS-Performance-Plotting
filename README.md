@@ -73,18 +73,20 @@ The importan part on each **{log_p??_s?}** file is similar to
   6      bcl iters on linear Coriolis                   92.14563        36        2.50102        2.60965        2.54557     3.09      31.46       0.99
   7       ocn_fuperp                                    79.29597        36        2.08357        2.21537        2.14873     2.66      86.06       0.98
 ```
-
-version 6
-Horizontal bars plots without bar color match on the subplots. Figure 1 Unsorted and figure 2 sorted  
-
-version 7 
-horizontal bars subplots  without bar color match on the subplots. Figure, subplot (2, 1, 1) Unsorted, andsubplot (2, 1, 2) sorted  
-
-version 8 
-horizontal bars subplots  with bar color match on the subplots. Figure, subplot (2, 1, 1) Unsorted, andsubplot (2, 1, 2) sorted
-Elapsed time and Press any key to terminate     
+     
 ### Data Layer
-
+This folder contains the folder outputs for each testcase and HPC system
+```
+hrmoncada:data$ ll
+total 28K
+drwxrwxr-x  7 hrmoncada 4.0K Aug 19 13:14 .
+drwxrwxr-x 15 hrmoncada 4.0K Aug 20 08:59 ..
+drwxrwxr-x  5 hrmoncada 4.0K Jun 12 12:41 LANL_Badge
+drwxrwxr-x  5 hrmoncada 4.0K Jun  3 12:56 LANL_Grizzly
+drwxrwxr-x  5 hrmoncada 4.0K Aug 19 13:46 NERSC_Cori_Haswell
+drwxrwxr-x  5 hrmoncada 4.0K Jun  3 10:47 NERSC_Cori_KNL
+drwxrwxr-x  5 hrmoncada 4.0K Jun  3 10:47 ORNL_Summit
+```
 ## HPC Cluster performance
 <!-- This is an h1 heading -->
 ### Compile
