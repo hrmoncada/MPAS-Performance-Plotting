@@ -92,7 +92,7 @@ $ python3 HPC_cluster_system_performance.py
 ```
 ### Data HPC
 Each file contains performance measures for each testcase and HPC system 
-```sh
+```
 data/
   |__EC60to30_badger.txt
   |__EC60to30_Cori_Haswell.txt
