@@ -77,15 +77,12 @@ The importan part on each **{log_p??_s?}** file is similar to
 ### Data Layer
 This folder contains the folder outputs for each testcase and HPC system
 ```
-hrmoncada:data$ ll
-total 28K
-drwxrwxr-x  7 hrmoncada 4.0K Aug 19 13:14 .
-drwxrwxr-x 15 hrmoncada 4.0K Aug 20 08:59 ..
-drwxrwxr-x  5 hrmoncada 4.0K Jun 12 12:41 LANL_Badge
-drwxrwxr-x  5 hrmoncada 4.0K Jun  3 12:56 LANL_Grizzly
-drwxrwxr-x  5 hrmoncada 4.0K Aug 19 13:46 NERSC_Cori_Haswell
-drwxrwxr-x  5 hrmoncada 4.0K Jun  3 10:47 NERSC_Cori_KNL
-drwxrwxr-x  5 hrmoncada 4.0K Jun  3 10:47 ORNL_Summit
+data/
+ |__ **LANL_Badge/**
+ |__ **LANL_Grizzly/
+ |__ **NERSC_Cori_Haswell/
+ |__ **NERSC_Cori_KNL/
+ |__ ORNL_Summit/
 ```
 ## HPC Cluster performance
 <!-- This is an h1 heading -->
