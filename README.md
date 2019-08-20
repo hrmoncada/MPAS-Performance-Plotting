@@ -94,16 +94,16 @@ $ python3 HPC_cluster_system_performance.py
 Each file contains performance measures for each testcase and HPC system 
 ```
 data/
-  |__EC60to30_badger.txt
+  |__EC60to30_Badger.txt
   |__EC60to30_Cori_Haswell.txt
   |__EC60to30_Cori_KNL.txt
-  |__EC60to30_grizzly.txt
-  |__RRS18to6_badger.txt
+  |__EC60to30_Grizzly.txt
+  |__RRS18to6_Badger.txt
   |__RRS18to6_Cori_Haswell.txt
-  |__RRS18to6_grizzly.txt
-  |__RRS30to10_badger.txt
+  |__RRS18to6_Grizzly.txt
+  |__RRS30to10_Badger.txt
   |__RRS30to10_Cori_Haswell.txt
-  |__RRS30to10_grizzly.txt
+  |__RRS30to10_Grizzly.txt
 ```
 <!-- 
 #### Sub-sub-heading
