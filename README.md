@@ -78,11 +78,11 @@ The importan part on each **{log_p??_s?}** file is similar to
 This folder contains the folder outputs for each testcase and HPC system
 ```
 data/
- |__ **LANL_Badge/**
- |__ **LANL_Grizzly/
- |__ **NERSC_Cori_Haswell/
- |__ **NERSC_Cori_KNL/
- |__ ORNL_Summit/
+ |__ * LANL_Badge/
+ |__ * LANL_Grizzly/
+ |__ * NERSC_Cori_Haswell/
+ |__ * NERSC_Cori_KNL/
+ |__ * ORNL_Summit/
 ```
 ## HPC Cluster performance
 <!-- This is an h1 heading -->
@@ -91,20 +91,19 @@ data/
 $ python3 HPC_cluster_system_performance.py
 ```
 ### Data HPC
+Each file contains performance measures for each testcase and HPC system 
 ```sh
-total 48K
-drwxrwxr-x 2 hrmoncada 4.0K Aug 15 15:06 .
-drwxrwxr-x 3 hrmoncada 4.0K Aug 15 12:13 ..
--rw-rw-r-- 1 hrmoncada 1.2K Apr  4 17:36 EC60to30_badger.txt
--rw-rw-r-- 1 hrmoncada 1.2K Apr 23 15:09 EC60to30_Cori_Haswell.txt
--rw-rw-r-- 1 hrmoncada 1.2K Apr 23 15:09 EC60to30_Cori_KNLl.txt
--rw-rw-r-- 1 hrmoncada 1.3K Apr  4 17:36 EC60to30_grizzly.txt
--rw-rw-r-- 1 hrmoncada  532 Apr  4 17:40 RRS18to6_badger.txt
--rw-rw-r-- 1 hrmoncada  361 Jul 22 18:14 RRS18to6_Cori_Haswell.txt
--rw-rw-r-- 1 hrmoncada  643 Apr  9 18:43 RRS18to6_grizzly.txt
--rw-rw-r-- 1 hrmoncada  620 Apr  5 08:18 RRS30to10_badger.txt
--rw-rw-r-- 1 hrmoncada  363 Jul 22 18:14 RRS30to10_Cori_Haswell.txt
--rw-rw-r-- 1 hrmoncada  732 Apr  3 09:59 RRS30to10_grizzly.txt
+data/
+  |__ * EC60to30_badger.txt
+  |__ * EC60to30_Cori_Haswell.txt
+  |__ * EC60to30_Cori_KNLl.txt
+  |__ * EC60to30_grizzly.txt
+  |__ * RRS18to6_badger.txt
+  |__ * RRS18to6_Cori_Haswell.txt
+  |__ * RRS18to6_grizzly.txt
+  |__ * RRS30to10_badger.txt
+  |__ * RRS30to10_Cori_Haswell.txt
+  |__ * RRS30to10_grizzly.txt
 ```
 <!-- 
 #### Sub-sub-heading
