@@ -106,7 +106,7 @@ data_path = cwd+'/'+'data'+'/'
 #----------------------------------------------------
 # Color array
 #----------------------------------------------------
-colours=['r','g','b','k']
+colours=['b', 'g', 'r', 'c', 'm', 'y', 'k']
 
 #----------------------------------------------------
 # Initialize data plot 
@@ -161,7 +161,7 @@ print("SYPD             = (%d , %d)"%(len(SYPD),len(SYPD[0])))
 print("")
  
 #----------------------------------------------------
-# Plot Cosmetic Features
+# Plot Cosmetic Features - labes
 #----------------------------------------------------  
 #Plot loglog 
 f.add_subplot(121)
@@ -170,19 +170,14 @@ plt.ylabel('Simulated Years per Day (SYPD)', fontsize=14, weight='bold')
 plt.title('MPAS-ocean Performance Curve', fontsize=14, weight='bold')
 plt.tight_layout()
 plt.grid(which='major')
-#plt.legend(loc='upper left')
 # Plot data
 f.add_subplot(122)
-#plt.xlim(-100,4200)
-#plt.ylim(-10,600)
-#plt.autoscale(tight=True)
-plt.autoscale(enable=True, axis='y')
 plt.xlabel('Number of MPI ranks', fontsize=14, weight='bold')
 plt.ylabel('Performance Time', fontsize=14, weight='bold')
 plt.title('MPAS-ocean Performance Curve', fontsize=14, weight='bold')
 plt.tight_layout()
 plt.grid(which='major')
-#plt.legend(loc='upper right')  
+ 
   
 #----------------------------------------------------
 # Show figure
@@ -214,25 +209,27 @@ if PlotType == 2 :
   
 # Pick point 
   Perf_length = len(SYPD[1])
-  print("Pick the best point from the plot within the range [0,%d]"%(len(SYPD[1])-1))
-# pause  
+  print("From the plot choose the best point")
+  print("Range values are [0,%d]"%(len(SYPD[1])-1))
+  print(' ')  
   plt.pause(0.001)
-  input("Press [enter] to continue.") 
+  #input("Press [enter] to continue.") 
 # Best point    
-  pick_point = int(input("Best point - perfect plot : "))
+  pick_point = int(input("Type best point to draw the perfect plot : "))
   print(' ')
-  
+  print("| Num | Cores | Performance_Time | Perfect_Scaling | Perfect_Scaling_SYPD |")
+  print('----------------------------------------------------------------------------')
   for num in range(0,Perf_length):
     if num <= pick_point :
       Perfect_Scaling.append(Performance_Time[1][pick_point]*(2**(pick_point-num)))
       Perfect_Scaling_SYPD.append(SYPD[1][pick_point]/(2**(pick_point-num)))
-      print("%2d  %3d  %5.3f   %5.3f   %5.3f "%(num, Cores[1][num], Performance_Time[1][num], Perfect_Scaling[num] , Perfect_Scaling_SYPD[num]))
+      print("  %2d    %3d       %5.3f             %5.3f             %5.3f "%(num, Cores[1][num], Performance_Time[1][num], Perfect_Scaling[num] , Perfect_Scaling_SYPD[num]))
     elif num > pick_point : 
       Perfect_Scaling.append(Performance_Time[1][pick_point]/(2**(num-pick_point)))
       Perfect_Scaling_SYPD.append((2**(num-pick_point))*SYPD[1][pick_point])
-      print("%2d  %3d  %5.3f   %5.3f   %5.3f "%(num, Cores[1][num], Performance_Time[1][num], Perfect_Scaling[num] , Perfect_Scaling_SYPD[num]))
+      print("  %2d    %3d       %5.3f             %5.3f             %5.3f "%(num, Cores[1][num], Performance_Time[1][num], Perfect_Scaling[num] , Perfect_Scaling_SYPD[num]))
     else :  
-     print ,'Wrong !!! try again '
+     print('Wrong !!! try again ')
      
 # Plot Perfect Scaling arrays loglog
   f.add_subplot(121)
@@ -242,14 +239,22 @@ if PlotType == 2 :
   plt.plot(Cores[1], Perfect_Scaling,'k*--', linewidth=2, markeredgewidth= 0, markersize=10, label= 'Perfect Scaling')
 
 #----------------------------------------------------
-# Plot Cosmetic Features Legend
+# Plot Cosmetic Features - Legend
 #----------------------------------------------------  
 #Plot loglog 
 f.add_subplot(121)
-plt.legend(loc='upper left')
+#plt.legend(loc='upper left')
+plt.legend(loc='upper left',fontsize='medium')
 # Plot data
 f.add_subplot(122)
-plt.legend(loc='upper right')  
+plt.xlim(xmin=-20)
+plt.ylim(ymin=-20) # Set 'auto' for upper limit, but keep a fixed lower limit 
+#plt.xlim(-20,(Cores[1][-1]+50))
+#plt.ylim(-10,(Performance_Time[1][0]+100))
+#plt.autoscale(tight=True)
+#plt.autoscale(enable=True, axis='y')
+#plt.legend(loc='upper left')
+plt.legend(loc='upper right', fontsize='medium')  
   
 #----------------------------------------------------
 # Show figure
@@ -264,6 +269,7 @@ f.savefig(Case_name[0]+'_result.pdf', bbox_inches='tight')
 # Press any key to terminate
 #----------------------------------------------------
 #plt.pause(5)
+print(' ')  
 while(True):
   print("Elapsed time: %6.4s seconds" % (time.time() - start_time))
   key = input("Press any key to terminate: ")
