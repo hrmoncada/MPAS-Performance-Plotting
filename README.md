@@ -18,6 +18,7 @@ The python code store in this repository read the outputs from MPAS testcase whi
 <!-- Comments -->
 
 ## Layer performance evaluation
+I wrote these python programs to evaluate the MPAS outputs, and extract and plot the subroutines by layer performance versus the number of cores to understand the performance behavior of the MPAS MPI version.
 <!-- This is an h1 heading -->
 ### Compile
 ```sh
