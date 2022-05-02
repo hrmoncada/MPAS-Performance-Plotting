@@ -1,6 +1,5 @@
 # MPAS-Performance-Plotting
-This is a control version private repository for the development and sharing (public, no available) . 
-The python code store in this repository read the outputs from MPAS testcase which were executed on differents HPC cluster. The outputs have information about the layer subroutine performance 
+This is a control version repository for the development and sharing (public, no available). The python code search, read and extract the information from the MPAS test case outputs. MPAS was executed on different HPC clusters to collect data. The outputs files have information about the layer subroutine performance.
 
 ## Table of Contents
 - [Layer performance evaluation](#Layer-performance-evaluation)
