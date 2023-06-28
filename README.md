@@ -109,6 +109,18 @@ data/
 #### Sub-sub-heading
 This is an h3 heading
 -->
+<!--
+![Alt text](https://github.com/hrmoncada/Epidemic-Model-SIR-CHAGAS/blob/main/LaTex/pictures/imagen_6.jpg "Genetic Modification of the bacterial symbionts" align="center)
+-->
+<p align="center">
+<img
+  src="https://github.com/hrmoncada/MPAS-Performance-Plotting/blob/master/HPC_Cluster_Performance/EC60to30_result.pdf"
+  alt="Alt text"
+  title="Genetic Modification of the bacterial symbionts"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+</p>
+
+
 
 ## Rules
 Here are the rules for (or lack thereof):
