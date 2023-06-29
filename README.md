@@ -114,7 +114,7 @@ This is an h3 heading
 -->
 <p align="center">
 <img
-  src="https://github.com/hrmoncada/MPAS-Performance-Plotting/blob/master/figures/EC60to30_result.pdf"
+  src="https://github.com/hrmoncada/MPAS-Performance-Plotting/blob/master/figures/EC60to30_result.png"
   alt="Alt text"
   title="MPAS Performance"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
