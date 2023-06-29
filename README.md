@@ -73,6 +73,21 @@ Note that on each **{log_p??_s?}** file we look for the following part. This par
   6      bcl iters on linear Coriolis                   92.14563        36        2.50102        2.60965        2.54557     3.09      31.46       0.99
   7       ocn_fuperp                                    79.29597        36        2.08357        2.21537        2.14873     2.66      86.06       0.98
 ```
+<p align="center">
+<img
+  src="https://github.com/hrmoncada/MPAS-Performance-Plotting/blob/master/figures/Subroutine_bars_16_cores_grizzly_1.png"
+  alt="Alt text"
+  title="MPAS Layer 5 subroutines"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+</p>
+<p align="center">
+<img
+  src="https://github.com/hrmoncada/MPAS-Performance-Plotting/blob/master/figures/Subroutine_performance1.png"
+  alt="Alt text"
+  title="MPAS Layer 5 subroutines"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+</p>
+
      
 ### Data Layer
 This folder contains the folder outputs for each testcase and HPC system
